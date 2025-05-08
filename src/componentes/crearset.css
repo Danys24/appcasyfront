@@ -1,0 +1,13 @@
+.set{
+    border: none;
+    background: transparent;
+    width: 9rem;
+    height: 3rem;
+    color:rgb(50,50,50);
+    background-color: rgb(255,255,255);
+}
+
+.set:hover{
+    border: rgb(50,50,50);
+    background-color: rgb(200,200,200);
+}

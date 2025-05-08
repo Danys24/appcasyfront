@@ -1,0 +1,62 @@
+#root{
+    width: 100vw;
+}
+h1{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.imagen-home{
+    width: 30rem;
+    height: 20rem;
+    text-align: center;
+}
+
+.contenedor{
+    background-color: rgb(250, 250, 250);
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.home{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.contenedor svg{
+    height: 6rem;
+    width: 6rem;
+}
+
+.container-cards{
+    display: grid;
+    display: flex;
+    padding: 2rem;
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.card{
+    background-color: rgb(170, 170, 170);
+    width: 13rem;
+    height: 14rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.5rem;
+}
+
+.card:hover{
+    scale: 1.1;
+    background-color: rgb(150, 150, 150);
+}
