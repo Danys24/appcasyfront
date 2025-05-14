@@ -7,7 +7,7 @@ function Home() {
     <div className='home'>
       <div className='contenedor'>
         <h1>Gestiona y controla tus Casos de Prueba fácilmente</h1>
-        <h4>Organiza tus pruebas, sigue el progreso y mantén la calidad al máximo.</h4>
+        <p>Organiza tus pruebas, sigue el progreso y mantén la calidad al máximo.</p>
         <img className= 'imagen-home' src={imgQA} alt="QA" />
         <div className='container-cards'>
           <div className='card'>

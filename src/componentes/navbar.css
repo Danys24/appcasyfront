@@ -1,50 +1,63 @@
 .navbar {
-    position: fixed;
-    top: 0;
-    background-color: #333;
-    width: 100vw;
-    height: 3rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .navbar a {
-    color: white;
-    margin-right: 1rem;
-    text-decoration: none;
-  }
-  .navbar a:hover {
-    text-decoration: underline;
-  }
+  position: fixed;
+  top: 0;
+  background-color: #333;
+  width: 100vw;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar a {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+.navbar a:hover {
+  text-decoration: underline;
+}
 
-  .logo{
-    width: 1.8rem;
-    height: 1.8rem;
-    border-radius: 50%;
-    margin: 0;
-  }
+.logo{
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  margin: 0;
+}
 
-  .contenedor-logo{
-    padding-left: 1rem;
+.contenedor-logo{
+  padding-left: 1rem;
     
-  }
+}
 
-  .c-logo{
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+.c-logo{
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  button{
-    height: 2.2rem;
-    width: 6rem;
-    text-align: center;
-    justify-content: center;
-    padding: 0;
-  }
+button{
+  height: 2.2rem;
+  width: 6rem;
+  text-align: center;
+  justify-content: center;
+  padding: 0;
+}
 
-  .menu-contenedor{
-    padding-right: 0.5rem;
-  }
+.menu-contenedor{
+  padding-right: 0.5rem;
+}
+
+.menu-contenedor button{
+  background-color: transparent;
+  color: rgb(243, 247, 6);;
+  border: none;
+  width: 10rem;
+}
+
+.menu-contenedor button:hover{
+  color: rgb(20,20,20);
+  background: rgb(243, 247, 6);
+  transition: background-color 0.8s ease;
+}

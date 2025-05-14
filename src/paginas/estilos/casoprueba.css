@@ -1,0 +1,121 @@
+.contenedor-info-prueba{
+    width: 90%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+}
+
+.info-prueba{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn-paso{
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.btn-paso:focus{
+    outline: none;
+}
+
+.btn-paso:hover{
+    scale: 1.5;
+}
+
+.pasos-prueba{
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.pasos-prueba textarea{
+    resize: none;
+    height: 10rem;
+    width: 16rem;
+    padding: 0.5rem;
+    font-family: inherit;
+}
+
+.pasos-prueba td{
+    height: 5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.id-paso{
+    width: 2rem;
+}
+
+.contenedor-info-prueba svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: rgb(228, 231, 28);
+}
+
+.anexo-paso {
+    width: 11.5rem;
+    font-size: 0.1rem;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border: 2px dashed rgb(228, 231, 28);
+    border-radius: 0.5rem;
+    background-color: #f3f4f6;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.anexo-paso:hover {
+    background-color: #e0e7ff;
+    border-color: rgb(228, 231, 28);
+    color: #111827;
+}
+
+.anexo-paso:focus {
+    outline: none;
+    border-color: rgb(228, 231, 28);
+    box-shadow: 0 0 0 3px rgb(228, 231, 28, 0.3);
+}
+
+.estado-paso {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  width: 7rem;
+  color: #374151;
+  background-color: #f3f4f6;
+  border: 2px solid rgb(228, 231, 28);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, rgb(228, 231, 28) 50%),
+                    linear-gradient(135deg, rgb(228, 231, 28) 50%, transparent 50%);
+  background-position: calc(100% - 1rem) center, calc(100% - 0.75rem) center;
+  background-size: 8px 8px, 8px 8px;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+}
+
+.estado-paso:hover {
+  background-color: #e0e7ff;
+  border-color: rgb(228, 231, 28);
+  color: #111827;
+}
+
+.estado-paso:focus {
+  outline: none;
+  border-color: rgb(228, 231, 28);
+  box-shadow: 0 0 0 3px rgba(228, 231, 28, 0.3);
+}

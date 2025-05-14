@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { useParams } from 'react-router-dom'
-import CrearCasoPrueba from '../componentes/crearCasoPrueba'
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import CrearCasoPrueba from '../componentes/crearCasoPrueba';
+import './estilos/set.css'
 
 
 function Set() {
@@ -19,14 +20,15 @@ function Set() {
   }
 
   return (
-    <>
-      <h1>Set</h1>
-      <h2>Detalle del Set</h2>
-      <p>Nombre: {setEncontrado.nombre}</p>
-      <p>Descripción: {setEncontrado.descripcion}</p>
-      <p>Estado: {setEncontrado.estado}</p>
+    <div className='contenedor-info-set'>
+      <div className='cont-info'>
+        <h2>{setEncontrado.nombre}</h2>
+        <p>Estado <br/> <div className='estado-div'>{setEncontrado.estado}</div></p>    
+      </div>    
+      <p>{setEncontrado.descripcion}</p>
+      <h3>Casos de Prueba</h3>
       <CrearCasoPrueba/>
-    </>
+    </div>
   )
 }
 

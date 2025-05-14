@@ -27,7 +27,7 @@ export default function Navbar() {
            <Link to="/SetPrueba">Crear Set Prueba</Link>
            <Link to="/Informes">Informes</Link>
            <Link to="/Ayuda">Ayuda</Link>
-           <button onClick={cerrarSesion}>Logout</button>
+           <button onClick={cerrarSesion}>Cerrar Sesion</button>
          </div>
        </nav>
       ) : (
