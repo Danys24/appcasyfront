@@ -114,6 +114,7 @@
 }
 
 .contenedor-set-item .nombre{
+    height: 4rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -152,6 +153,10 @@
     background: transparent;
     border: none;
     color: rgb(243, 247, 6);
+}
+
+.btn-accion-set:focus{
+    outline: none;
 }
 
 .contenedor-set-pruebas{
