@@ -61,6 +61,10 @@
     color: rgb(243, 247, 6);
 }
 
+.btn-accion:focus{
+    outline: none;
+}
+
 .container-info-prueba{
     margin-top: 1.5rem;
     margin-bottom: 4rem;

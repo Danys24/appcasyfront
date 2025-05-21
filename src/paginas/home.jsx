@@ -1,14 +1,29 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './estilos/home.css'
 import imgQA from '../assets/imagenes/imgQA.png'
 
 function Home() {
+  const navegar = useNavigate()
+
+  const irLogin = () => {
+    navegar('/login');
+  }
+
   return (
     <div className='home'>
-      <div className='contenedor'>
+      <div className='home-titulo'>
         <h1>Gestiona y controla tus Casos de Prueba fácilmente</h1>
-        <p>Organiza tus pruebas, sigue el progreso y mantén la calidad al máximo.</p>
-        <img className= 'imagen-home' src={imgQA} alt="QA" />
+        <div className='accionar'>
+          <p>Ingresa a CasyApp y gestiona tus pruebas</p>
+          <button onClick={irLogin}>Iniciar Sesión</button>
+        </div>
+      </div>
+      <div className='home-cuerpo'>
+        <div className='banner'>
+          <h5>Organiza tus pruebas, sigue el progreso y mantén la calidad al máximo.</h5>
+          <img className= 'imagen-home' src={imgQA} alt="QA" />
+        </div>
         <div className='container-cards'>
           <div className='card'>
             <h3>Organiza tus Casos</h3>

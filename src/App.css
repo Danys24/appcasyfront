@@ -1,4 +1,8 @@
 #root{
+  background-image: url('../src/assets/imagenes/fondo_8.png');
+  background-repeat: no-repeat;    
+  background-size: cover;            
+  background-position: center center;
   height: 100%;
   width: 100%;
   padding: 0;

@@ -13,9 +13,12 @@
   color: white;
   margin-right: 1rem;
   text-decoration: none;
+  transition: color ease 0.5s, border-bottom ease 0.001s;
+  
 }
 .navbar a:hover {
-  text-decoration: underline;
+  color: rgb(243, 247, 6);
+  border-bottom: 2px solid rgb(243, 247, 6);  
 }
 
 .logo{
@@ -28,6 +31,10 @@
 .contenedor-logo{
   padding-left: 1rem;
     
+}
+
+.contenedor-logo a:hover{
+  border: none;
 }
 
 .c-logo{
