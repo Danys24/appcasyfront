@@ -6,7 +6,7 @@ import './estilos/login.css'
 export default function Login() {
   const { login } = useAuth()
   const navigate = useNavigate()
-  const [form, setForm] = useState({ usuario: '', clave: '' });
+  const [form, setForm] = useState({ nombre: '', clave: '' });
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -40,10 +40,10 @@ export default function Login() {
       console.log('Usuario autenticado:', data);
 
       // Guardar los datos del usuario en localStorage o contexto
-      localStorage.setItem('usuario', JSON.stringify(data.usuario));
+      //localStorage.setItem('usuario', JSON.stringify(data.nombre));
 
       // Si usas contexto de autenticación:
-      login(data.usuario);
+      login(data.nombre);
 
       /*
       const fakeUser = { name: 'Danys', role: 'tester' }
@@ -61,11 +61,10 @@ export default function Login() {
     <div className='form-contenedor'>
         <form onSubmit={handleSubmit}>
             <h2>Iniciar sesión</h2>
-            <input type="text" name='usuario' placeholder="Usuario" value={form.usuario} onChange={handleChange} required />
+            <input type="text" name='nombre' placeholder="Usuario" value={form.usuario} onChange={handleChange} required />
             <input type="password" name="clave" placeholder="Clave" value={form.clave} onChange={handleChange} required />
             <button type="submit">Ingresar</button>
             {error && <p style={{ color: 'red', fontSize:'0.7rem'}}>{error}</p>}
-            <Link to="/CrearUsuario" className='sesion'>Crear nuevo usuario</Link>
         </form>
     </div>
   )

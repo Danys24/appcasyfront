@@ -39,7 +39,6 @@ export default function Navbar() {
           </div>
           <div className='menu-contenedor'>
             <Link to="/">Home</Link>
-            <Link to="/CrearUsuario">Crear Usuario</Link>
             <Link to="/Login">Login</Link>
           </div>
         </nav>
