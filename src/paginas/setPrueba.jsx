@@ -3,7 +3,7 @@ import CrearSet from '../componentes/crearSet'
 import './estilos/setsPrueba.css'
 import MenuProyectos from '../componentes/menuProyectos';
 import {useParams} from 'react-router-dom';
-import {obtenerProyectos} from '../servicios/proyectosService.js'
+import {obtenerProyectos,obtenerProyectosPorIdUsuarioTotal} from '../servicios/proyectosService.js'
 
 function SetPrueba() {
   const {id} = useParams();
@@ -14,7 +14,7 @@ function SetPrueba() {
     const guardarProyectos = async () =>{
       try{
 
-        const respuesta = await obtenerProyectos();
+        const respuesta = await obtenerProyectosPorIdUsuarioTotal();
         setListaProyectos(respuesta);
 
       }catch(err){

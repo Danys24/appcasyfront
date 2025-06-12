@@ -36,6 +36,30 @@ export async function obtenerProyectosPorIdUsuario(page, limit){
     }
 }
 
+export async function obtenerProyectosPorIdUsuarioTotal(){
+    try{
+        const res = await fetch(`${URL}usuarios/${idUsuario}/proyectosTotales`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw new Error(data.error || 'Error al obtener los proyectos');
+        }
+
+        
+        return data;
+
+    }catch(err){
+        console.error(err);
+    }
+}
+
 export async function obtenerProyectos(){
     try{
         const res = await fetch(`${URL}proyectos`, {
