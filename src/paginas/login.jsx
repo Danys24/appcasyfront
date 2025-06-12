@@ -43,13 +43,14 @@ export default function Login() {
       //localStorage.setItem('usuario', JSON.stringify(data.nombre));
 
       // Si usas contexto de autenticación:
-      login(data.nombre);
+      login(data.token);
 
       /*
       const fakeUser = { name: 'Danys', role: 'tester' }
       login(fakeUser)
       */
       navigate('/Inicio') // redirige al inicio
+      window.location.reload();
 
     } catch(err){
       console.error(err);

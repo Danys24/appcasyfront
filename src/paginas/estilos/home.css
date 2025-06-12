@@ -114,6 +114,10 @@
 
 .accionar button{
     width: 50%;
+    color: rgb(217, 231, 16);
+    background-color: transparent;
+    border: 1px solid rgb(217, 231, 16);
+    border-radius: 2px;
     transition: background-color ease 0.5s,color ease 0.5s;
 }
 

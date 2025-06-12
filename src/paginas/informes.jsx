@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import './estilos/informes.css'
+import MenuProyectos from '../componentes/menuProyectos'
 
 
 function Informes() {
   return (
-    <>
-      <h1>Informes</h1>
-    </>
+    <div className='contenedor-informes'>
+      <MenuProyectos/>
+      <h2>Informes</h2>
+    </div>
   )
 }
 

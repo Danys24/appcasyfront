@@ -11,8 +11,10 @@
 
 .App{
   height: 100%;
+  width: 100%;
+  margin: 0;
   padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

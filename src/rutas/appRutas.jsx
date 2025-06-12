@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Inicio from '../paginas/inicio'
+import Proyecto from '../paginas/proyectos'
+import Ciclo from '../paginas/ciclos'
 import SetPrueba from '../paginas/setPrueba'
 import Informes from '../paginas/informes'
 import Ayuda from '../paginas/ayuda'
@@ -19,9 +21,11 @@ export default function AppRoutes() {
       <Routes>   
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/CrearUsuario" element={<CrearUsuario />} />
+        <Route path="/CrearUsuario" element={<PrivateRoute><CrearUsuario /></PrivateRoute>} />
         <Route path="/Inicio" element={<PrivateRoute><Inicio /></PrivateRoute>} />
-        <Route path="/SetPrueba" element={<PrivateRoute><SetPrueba /></PrivateRoute>} />
+        <Route path="/Proyectos" element={<PrivateRoute><Proyecto /></PrivateRoute>} />
+        <Route path="/Ciclos" element={<PrivateRoute><Ciclo /></PrivateRoute>} />
+        <Route path="/SetPrueba/:id" element={<PrivateRoute><SetPrueba /></PrivateRoute>} />
         <Route path="/Informes" element={<PrivateRoute><Informes /></PrivateRoute>} />
         <Route path="/Ayuda" element={<PrivateRoute><Ayuda /></PrivateRoute>} />
         <Route path="/Set/:nombre" element={<PrivateRoute><Set /></PrivateRoute>} />

@@ -1,0 +1,64 @@
+.ventana-vincular-usuario{
+    position: absolute;
+    top: -100px;
+    right: 40px;
+    width: 15rem;
+    height: 9rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid rgb(200,200,200);
+    overflow: auto;
+}
+
+.ventana-vincular-usuario form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0;
+}
+
+.contenedor-vin-usuario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.contenedor-vin-usuario select{
+    width: 100%;
+    height: 2rem;
+    color: rgb(100,100,100);
+    border: none;
+    border-radius: 2px;
+}
+
+.contenedor-vin-usuario select:focus{
+    outline: none;
+}
+
+.btn-vincular{
+    background: transparent;
+    color: rgb(10,10,10);
+    border: 1px solid rgb(50,50,50);
+    border-radius: 0;
+    transition: background 1s ease;
+}
+
+.btn-vincular:hover{
+    background: rgb(50,50,50);
+    color: rgb(248, 232, 2);
+    border: none;
+}
+
+.btn-vincular:focus{
+    outline: none;
+}
+

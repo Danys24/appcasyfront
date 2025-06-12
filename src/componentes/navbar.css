@@ -10,15 +10,21 @@
   align-items: center;
 }
 .navbar a {
-  color: white;
+  color: rgb(255,255,255);
+  fill:rgb(255,255,255);
   margin-right: 1rem;
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
   transition: color ease 0.5s, border-bottom ease 0.001s;
   
 }
 .navbar a:hover {
-  color: rgb(243, 247, 6);
-  border-bottom: 2px solid rgb(243, 247, 6);  
+  color: rgb(243, 247, 6); 
+  fill: rgb(243, 247, 6); 
 }
 
 .logo{
@@ -54,6 +60,9 @@ button{
 
 .menu-contenedor{
   padding-right: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  padding-right: 1rem;
 }
 
 .menu-contenedor button{
@@ -67,4 +76,31 @@ button{
   color: rgb(20,20,20);
   background: rgb(243, 247, 6);
   transition: background-color 0.8s ease;
+}
+
+.menu-contenedor svg{
+  width: 0.8rem;
+  height:  0.8rem;
+}
+
+.cont-usuario{
+  background-color: rgb(255,255,255);
+  fill:rgb(0,0,0);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  padding: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont-usuario svg{
+  width: 1rem;
+  height: 1rem;
+}
+
+.cont-usuario:hover{
+  cursor: pointer;
+  scale: 1.1;
 }

@@ -3,14 +3,14 @@ import { createContext, useContext, useState, useEffect} from 'react'
 const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null)
+  const [token, setToken] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     try {
-        const storedUser = localStorage.getItem('user')
-        if (storedUser) {
-          setUser(JSON.parse(storedUser))
+        const storedToken = localStorage.getItem('token')
+        if (storedToken) {
+          setToken(JSON.parse(storedToken))
         }
       } catch (error) {
         console.error("Error leyendo localStorage:", error)
@@ -20,19 +20,19 @@ export function AuthProvider({ children }) {
   }, [])
 
   const login = (userData) => {
-    setUser(userData)
-    localStorage.setItem('user', JSON.stringify(userData))
+    setToken(userData);
+    localStorage.setItem('token', JSON.stringify(userData))
   }
 
   const logout = () => {
-    setUser(null)
-    localStorage.removeItem('user')
+    setToken(null)
+    localStorage.removeItem('token')
   }
 
-  const isAuthenticated = !!user
+  const isAuthenticated = !!token
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={{ token, login, logout, isAuthenticated }}>
       {loading ? <div>Cargando...</div> : children}
     </AuthContext.Provider>
   )
