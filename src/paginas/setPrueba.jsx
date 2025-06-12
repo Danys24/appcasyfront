@@ -25,12 +25,8 @@ function SetPrueba() {
     guardarProyectos();
 
   }, [])
-
-  console.log("proyectos", listaProyectos)
-  console.log("id", id)
   
   const proyectoEncontrado = listaProyectos.find((l) => l.id == id);
-  console.log("proyecto encontrado",proyectoEncontrado)
 
   if(!proyectoEncontrado){
     return <p>No se encontro el proyecto con el id {id}</p>
