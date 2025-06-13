@@ -160,7 +160,7 @@ function CrearProyecto() {
                 <p>{objeto.descripcion}</p>
                 <div className='acciones'>
                   <button className='btn-accion-set' onClick={() => editarProyecto(objeto)}>Editar</button>
-                  <Link className='btn-accion-set' to={`/SetPrueba/${objeto.id}`}>Abrir</Link>
+                  <Link className='btn-accion-set' to={`/proyecto/${objeto.id}/SetPrueba`}>Abrir</Link>
                   <button className='btn-accion-set' onClick={() => eliminarProyecto(objeto)}>Eliminar</button>
                 </div>
 

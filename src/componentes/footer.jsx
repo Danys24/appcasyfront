@@ -4,7 +4,8 @@ import './footer.css'
 export default function Footer() {
   return (
     <div className='footer'>
-        <p>Sitio creado por Danys Serna</p>
+      <p>Casy V1.0 2025</p>
+      <p>App creada por Danys Serna</p>
     </div>
   )
 }

@@ -5,11 +5,9 @@ import MenuProyectos from '../componentes/menuProyectos';
 
 function Ciclo() {
   return (
-    <div className='contenedor-proyecto'>
-      <MenuProyectos/>
-      <h2>Crea y gestiona tus proyectos</h2>
-      <p>Trabaja con tu equipo de calidad de forma conjunta y organizada 
-        garantizando un flujo de tabajo que permite la certificacion de tus procesos.</p>
+    <div className='contenedor-ciclos'>
+      <h2>Ciclos de Prueba</h2>
+      <p>Crea los ciclos para la ejecución de los casos de prueba</p>
     </div>
   )
 }

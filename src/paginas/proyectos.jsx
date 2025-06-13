@@ -1,15 +1,44 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {useParams, Outlet} from 'react-router-dom';
 import './estilos/proyectos.css';
 import MenuProyectos from '../componentes/menuProyectos';
+import {obtenerProyectosPorIdUsuarioTotal} from '../servicios/proyectosService.js';
 
 
 function Proyecto() {
+   const {id} = useParams();
+  const [listaProyectos, setListaProyectos] = useState([]);
+
+  useEffect(() => {
+
+    const guardarProyectos = async () =>{
+      try{
+
+        const respuesta = await obtenerProyectosPorIdUsuarioTotal();
+        setListaProyectos(respuesta);
+
+      }catch(err){
+
+      }
+    }
+
+    guardarProyectos();
+
+  }, [])
+  
+  const proyectoEncontrado = listaProyectos.find((l) => l.id == id);
+
+  if(!proyectoEncontrado){
+    return <p>No se encontro el proyecto con el id {id}</p>
+  }
+
   return (
     <div className='contenedor-proyecto'>
         <MenuProyectos/>
-        <h2>Crea y gestiona tus proyectos</h2>
-        <p>Trabaja con tu equipo de calidad de forma conjunta y organizada 
-            garantizando un flujo de tabajo que permite la certificacion de tus procesos.</p>
+        <h2>{proyectoEncontrado.nombre}</h2>
+        <p>{proyectoEncontrado.descripcion}</p>
+        <Outlet/>
+
     </div>
   )
 }

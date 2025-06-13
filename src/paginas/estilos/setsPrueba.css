@@ -1,9 +1,10 @@
 .contenedor-set{
     height: 100%;
-    width: 80%;
-    padding-top: 3rem;
+    width: 100%;
+    padding-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: start;
     gap: 1rem;
+
 }
