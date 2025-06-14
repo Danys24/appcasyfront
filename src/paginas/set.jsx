@@ -1,22 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CrearCasoPrueba from '../componentes/crearCasoPrueba';
 import './estilos/set.css'
+import {obtenerSetsPorIdProyectoTotal} from '../servicios/setsService';
 
 
 function Set() {
-  const { nombre } = useParams()
+  const { idSet, id } = useParams();
+  const [listaSets, setListaSets] = useState([]);
 
-  // Simulación de datos (en la práctica traerías de estado global o fetch):
-  const setsGuardados = [
-    { id: '1', nombre: 'Prueba1', descripcion: 'desc 1', estado: 'Pendiente' },
-    { id: '2', nombre: 'Prueba2', descripcion: 'desc 2', estado: 'Exitoso' }
-  ]
+  useEffect(() => {
+    const cargarSets = async () => {
+      try {
+        const respuesta = await obtenerSetsPorIdProyectoTotal(id);
+        setListaSets(respuesta);
 
-  const setEncontrado = setsGuardados.find((s) => s.nombre === nombre)
+      } catch{
+        
+      }
+    }
+
+    cargarSets();
+  }, [])
+
+  const setEncontrado = listaSets.find((s) => s.id == idSet);
 
   if (!setEncontrado) {
-    return <p>No se encontró el set con nombre {nombre}</p>
+    return <p>No se encontró el set con id {id}</p>
   }
 
   return (

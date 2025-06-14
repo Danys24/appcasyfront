@@ -26,11 +26,11 @@ export default function AppRoutes() {
         <Route path="/Proyecto/:id" element={<PrivateRoute><Proyecto /></PrivateRoute>} >
           <Route path="Ciclos" element={<PrivateRoute><Ciclo /></PrivateRoute>} />
           <Route path="SetPrueba" element={<PrivateRoute><SetPrueba /></PrivateRoute>} />
+          <Route path="SetPrueba/Set/:idSet" element={<PrivateRoute><Set /></PrivateRoute>} />
+          <Route path="SetPrueba/Set/:idSet/CasoPrueba/:idCaso" element={<PrivateRoute><CasoPrueba /></PrivateRoute>} />
           <Route path="Informes" element={<PrivateRoute><Informes /></PrivateRoute>} />
         </Route>
         <Route path="/Ayuda" element={<PrivateRoute><Ayuda /></PrivateRoute>} />
-        <Route path="/Set/:nombre" element={<PrivateRoute><Set /></PrivateRoute>} />
-        <Route path="/CasoPrueba/:nombre" element={<PrivateRoute><CasoPrueba /></PrivateRoute>} />
       </Routes>
       <Footer/>
     </BrowserRouter>

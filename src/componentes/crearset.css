@@ -168,3 +168,24 @@
     flex-direction: column;
     gap: 1rem;
 }
+
+.contenedor-paginado{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contenedor-navegar button{
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.contenedor-paginado select{
+    width: 2.5rem;
+    height: 2rem;
+    color: rgb(100,100,100);
+}

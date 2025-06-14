@@ -1,19 +1,42 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import './crearset.css';
+import {obtenerSetsPorIdProyectoPaginas, crearUnSet, obtenerUnSet, actualizarUnSet,eliminarUnSet} from '../servicios/setsService.js';
 
 
 function CrearSet() {
+  const {id} = useParams();
   const [listaSets, setListaSets] = useState([]);
   const [crearSetPrueba, setCrearSetPrueba] = useState(false);
   const [editar, setEditar] = useState(false);
   const [guardar, setGuardar] = useState(true);
   const [datos, setDatos] = useState(null);
+  const [page, setPage] = useState(1);       
+  const [limit, setLimit] = useState(10); 
+  const [total, setTotal] = useState(0);
   const [formData, setFormData] = useState({
+    id:'',
     nombre: '',
     descripcion: '',
     estado: ''
   });
+
+  useEffect(() => {
+    const obtenerSets = async () => {
+      try {
+        const respuesta = await obtenerSetsPorIdProyectoPaginas(id, page, limit);
+        setListaSets(respuesta.data);
+        setTotal(respuesta.total);
+        
+      } catch(err){
+        console.error("error al obtener los sets", err);
+      }
+    }
+
+    obtenerSets();
+  }, [page, limit])
+
+  const totalPaginas = Math.ceil(total / limit);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -22,26 +45,33 @@ function CrearSet() {
     })
   }
 
-  const handleGuardar = (e) => {
-    e.preventDefault();
-    setDatos(formData); 
-    setListaSets([...listaSets,formData]);     // guardamos los datos ingresados
+  const handleGuardar = async (e) => {
+    //e.preventDefault();
+    await crearUnSet(id,formData);     // guardamos los datos ingresados
     setCrearSetPrueba(false); // ocultamos el formulario
     setFormData({ nombre: '', descripcion: '', estado: '' }); // opcional: limpiar formulario
   }
 
-  const editarSet = (objeto) => {
+  const editarSet = async (objeto) => {
     setCrearSetPrueba(true);
     setEditar(true);
     setGuardar(false);
-    setFormData(objeto);
+    const setPrueba = await obtenerUnSet(objeto.id);
+    const data = setPrueba[0];
+    setFormData({
+      id:data.id,
+      nombre:data.nombre,
+      descripcion:data.descripcion,
+      estado:data.estado});
   }
 
-  const eliminarSet = (objeto) => {
-    const index = listaSets.findIndex(c => c.nombre === objeto.nombre);
-    const setTemp = [...listaSets];
-    setTemp.splice(index,1);
-    setListaSets(setTemp);
+  const eliminarSet = async (objeto) => {
+    //const index = listaSets.findIndex(c => c.nombre === objeto.nombre);
+    //const setTemp = [...listaSets];
+    //setTemp.splice(index,1);
+    //setListaSets(setTemp);
+    await eliminarUnSet(parseInt(objeto.id));
+    window.location.reload();
   }
 
   const restablecer = () => {
@@ -51,12 +81,13 @@ function CrearSet() {
     setFormData({ nombre: '', descripcion: '', estado: '' });
   }
 
-  const actualizarSet = (e) => {
-    e.preventDefault();
-    const setsTemp = listaSets.map((dato) => {
-      return dato.nombre == formData.nombre ? formData : dato;
-    })
-    setListaSets(setsTemp);
+  const actualizarSet = async (e) => {
+    //e.preventDefault();
+    //const setsTemp = listaSets.map((dato) => {
+      //return dato.nombre == formData.nombre ? formData : dato;
+    //})
+    await actualizarUnSet(formData)
+    //setListaSets(setsTemp);
     setCrearSetPrueba(false);
     setFormData({ nombre: '', descripcion: '', estado: '' });
   }
@@ -102,23 +133,45 @@ function CrearSet() {
         </div>
       )}
 
-      {datos && (
+      {listaSets && (
         <div className='contenedor-set-pruebas'>
           {listaSets.map((objeto) => (
-            <div className='contenedor-set-item'>
+            <div className='contenedor-set-item' key={objeto.id}>
                 <div className='nombre'>
                   <p>{objeto.nombre}</p>
-                  <p className='estado'>Estado <br/> <div className='estado-div'>{objeto.estado}</div></p>
+                  <div className='estado'>
+                    <p>Estado</p>
+                    <div className='estado-div'>{objeto.estado}</div>
+                  </div>
                 </div>
                 <p>{objeto.descripcion}</p>
                 <div className='acciones'>
                   <button className='btn-accion-set' onClick={() => editarSet(objeto)}>Editar</button>
-                  <Link className='btn-accion-set' to={`/set/${objeto.nombre}`}>Ejecutar</Link>
+                  <Link className='btn-accion-set' to={`Set/${objeto.id}`}>Abrir</Link>
                   <button className='btn-accion-set' onClick={() => eliminarSet(objeto)}>Eliminar</button>
                 </div>
 
             </div>
           ))}
+            <div className='contenedor-paginado'>
+              <select value={limit} onChange={e => setLimit(Number(e.target.value))}>
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+              </select>
+              
+              <div className='contenedor-navegar'>
+                <button onClick={() => setPage(p => Math.max(p - 1, 1))} disabled={page === 1}>
+                  Anterior
+                </button>
+
+                <span>Página {page} de {totalPaginas}</span>
+
+                <button onClick={() => setPage(p => Math.min(p + 1, totalPaginas))} disabled={page === totalPaginas}>
+                  Siguiente
+                </button>
+              </div>
+            </div>
         </div>
       )}
     </div>
