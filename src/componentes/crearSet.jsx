@@ -118,6 +118,7 @@ function CrearSet() {
                   <option value="">Seleccione un estado</option>
                   <option value="Pendiente">Pendiente</option>
                   <option value="En Proceso">En Proceso</option>
+                  <option value="Fallo">Fallo</option>
                   <option value="Exitoso">Exitoso</option>
               </select>
             </label>

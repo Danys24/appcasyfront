@@ -33,7 +33,10 @@ function Set() {
     <div className='contenedor-info-set'>
       <div className='cont-info'>
         <h2>{setEncontrado.nombre}</h2>
-        <p>Estado <br/> <div className='estado-div'>{setEncontrado.estado}</div></p>    
+        <div>
+          <p>Estado</p>  
+          <div className='estado-div'>{setEncontrado.estado}</div>
+        </div>  
       </div>    
       <p>{setEncontrado.descripcion}</p>
       <h3>Casos de Prueba</h3>
