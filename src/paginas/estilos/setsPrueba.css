@@ -6,5 +6,9 @@
     flex-direction: column;
     justify-content: start;
     gap: 1rem;
+    overflow: auto;
+}
 
+.contenedor-set::-webkit-scrollbar{
+    display: none;
 }

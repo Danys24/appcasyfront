@@ -36,7 +36,7 @@ function Proyecto() {
     <div className='contenedor-proyecto'>
         <MenuProyectos/>
         <h2>{proyectoEncontrado.nombre}</h2>
-        <p>{proyectoEncontrado.descripcion}</p>
+        <p className='decripcion-proyecto'>{proyectoEncontrado.descripcion}</p>
         <Outlet/>
 
     </div>

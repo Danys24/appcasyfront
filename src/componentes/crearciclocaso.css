@@ -11,23 +11,36 @@
   z-index: 1000; 
 }
 
-.btn-crear-caso{
+.btn-crear-ciclo{
     color: rgb(255, 255, 255);
-    width: 10rem;
-    height: 3rem;
+    width: 7.5rem;
+    height: 2.5rem;
     border: none;
-    background: rgb(100,100,100);    
+    background: rgb(100,100,100); 
+    fill:rgb(243, 247, 6);
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;  
+    gap: 0.5rem; 
+    padding: 0.4rem;
 }
 
-.btn-crear-caso:hover{
+.btn-crear-ciclo svg{
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.btn-crear-ciclo:hover{
     color: rgb(50,50,50);
+    fill: rgb(50,50,50);
     background: rgb(200,200,200);
     transition: background-color 0.8s ease, color 0.8s ease;
 }
 
-#form-casos{
+#form-ciclo{
     width: 30rem;
-    height: 30rem;
+    height: 15rem;
 }
 
 .container-prueba{
@@ -36,13 +49,17 @@
     justify-content: center;
 }
 
-.prueba-info{
+.ciclo-info{
+    width: 60%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.accion{
+.accion-ciclos{
+    width: 40%;
     display: flex;
     flex-direction: row;
     justify-content: end;
@@ -70,7 +87,7 @@
     outline: none;
 }
 
-.container-info-prueba{
+.container-info-ciclo{
     margin-top: 1.5rem;
     margin-bottom: 4rem;
     width: 100%;
@@ -79,11 +96,17 @@
     gap: 1rem;
 }
 
-.container-prueba{
+.container-info-ciclo svg{
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: rgb(243, 247, 6);;
+}
+
+.container-ciclo{
     width: 100%;
     padding: 0.5rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background: rgb(230, 230, 230);
 }
 
@@ -108,58 +131,10 @@
     color: rgb(100,100,100);
 }
 
-.responsable-estado{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
-.estado-caso{
-    background: rgb(243, 247, 6);
-    width: 6rem;
-    height: 2rem;
-    padding: 0.3rem;
-    border-radius: 2px;
-}
 
-.responsable{
-    height: 1rem;
-    width: 1rem;
-    background: rgb(50,50,50);
-    fill:rgb(243, 247, 6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-}
 
-.responsable svg{
-    width: 0.8rem;
-    height: 0.8rem;
-}
 
-.responsable-caso{
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    gap: 0.2rem;
-}
 
-.nombre-caso{
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    gap: 1rem;
-}
 
-.estado-responsable-ciclo{
-    width: 30%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    gap: 1rem;
-}
+

@@ -13,9 +13,9 @@ if(token){
 }
 
 
-export async function obtenerCasosPorIdSetPaginas(idSet, page, limit){
+export async function obtenerCiclosPorIdProyectoPaginas(idProyecto, page, limit){
     try{
-        const res = await fetch(`${URL}sets/${idSet}/casosPaginas?page=${page}&limit=${limit}`, {
+        const res = await fetch(`${URL}proyectos/${idProyecto}/ciclosCasosPaginado?page=${page}&limit=${limit}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -26,7 +26,7 @@ export async function obtenerCasosPorIdSetPaginas(idSet, page, limit){
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al obtener los casos');
+            throw new Error(data.error || 'Error al obtener los ciclos');
         }
 
         return data;
@@ -36,9 +36,9 @@ export async function obtenerCasosPorIdSetPaginas(idSet, page, limit){
     }
 }
 
-export async function obtenerCasosPorIdSetTotal(idSet){
+export async function obtenerCiclosPorIdCiclosTotal(idSet){
     try{
-        const res = await fetch(`${URL}sets/${idSet}/casos`, {
+        const res = await fetch(`${URL}proyectos/${idProyecto}/sets`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -60,9 +60,9 @@ export async function obtenerCasosPorIdSetTotal(idSet){
     }
 }
 
-export async function crearUnCaso(idSet,form){
+export async function crearUnCiclo(idProyecto,form){
     try{
-        const res = await fetch(`${URL}casos`, {
+        const res = await fetch(`${URL}ciclosCasos`, {
             method: 'POST',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -70,11 +70,8 @@ export async function crearUnCaso(idSet,form){
             },
             body:JSON.stringify(
                 {
-                    idSet:idSet,
-                    nombre:form.nombre,
-                    descripcion:form.descripcion,
-                    estado: form.estado, 
-                    responsable: form.responsable 
+                    idProyecto:idProyecto,
+                    nombre:form.nombre
                 }
             )
         });
@@ -82,7 +79,7 @@ export async function crearUnCaso(idSet,form){
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al crear el caso');
+            throw new Error(data.error || 'Error al crear el ciclo');
         }
 
     }catch(err){
@@ -90,9 +87,9 @@ export async function crearUnCaso(idSet,form){
     }
 }
 
-export async function obtenerUnCaso(id){
+export async function obtenerUnCiclo(id){
     try{
-        const res = await fetch(`${URL}casos/${id}`, {
+        const res = await fetch(`${URL}ciclosCasos/${id}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -103,7 +100,7 @@ export async function obtenerUnCaso(id){
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al obtener el caso');
+            throw new Error(data.error || 'Error al obtener el ciclo');
         }
 
         return data;
@@ -113,26 +110,23 @@ export async function obtenerUnCaso(id){
     }
 }
 
-export async function actualizarUnCaso(form){
+export async function actualizarUnCiclo(form){
     try{
-        const res = await fetch(`${URL}casos/${form.id}`, {
+        const res = await fetch(`${URL}ciclosCasos/${form.id}`, {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
             body:JSON.stringify({
-                nombre:form.nombre,
-                descripcion: form.descripcion,
-                estado:form.estado,
-                responsable:form.responsable
+                nombre:form.nombre
             })
         });
 
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al actualizar el caso');
+            throw new Error(data.error || 'Error al actualizar el ciclo');
         }
 
     }catch(err){
@@ -140,9 +134,9 @@ export async function actualizarUnCaso(form){
     }
 }
 
-export async function eliminarUnCaso(id){
+export async function eliminarUnCiclo(id){
     try{
-        const res = await fetch(`${URL}casos/${id}`, {
+        const res = await fetch(`${URL}ciclosCasos/${id}`, {
             method: 'DELETE',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -153,28 +147,7 @@ export async function eliminarUnCaso(id){
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al eliminar el caso');
-        }
-
-    }catch(err){
-        console.error(err);
-    }
-}
-
-export async function ordenarCasos(idSet){
-    try{
-        const res = await fetch(`${URL}sets/${idSet}/casos`, {
-            method: 'PUT',
-            headers: {
-                'authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-            throw new Error(data.error || 'Error al ordenar los casos');
+            throw new Error(data.error || 'Error al eliminar el ciclo');
         }
 
     }catch(err){

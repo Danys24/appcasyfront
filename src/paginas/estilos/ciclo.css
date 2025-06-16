@@ -1,6 +1,14 @@
 .contenedor-ciclos{
     height: 100%;
-    width: 100%;
+    width: 60%;
     padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    overflow: auto;
+}
+
+.contenedor-ciclos::-webkit-scrollbar{
+    display: none;
 }
 
