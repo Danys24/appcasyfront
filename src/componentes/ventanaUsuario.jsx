@@ -12,9 +12,7 @@ function VentanaUsuario(){
 
     if(token){
         const decode = jwtDecode(token);
-        console.log(decode);
         usuario = decode.nombre;
-        console.log(usuario);
     }
 
     const cerrarSesion = () => {

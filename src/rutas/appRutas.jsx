@@ -16,7 +16,7 @@ import PrivateRoute from './privateRoutes'
 
 export default function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <Navbar/>
       <Routes>   
         <Route path="/" element={<Home />} />
@@ -33,6 +33,6 @@ export default function AppRoutes() {
         <Route path="/Ayuda" element={<PrivateRoute><Ayuda /></PrivateRoute>} />
       </Routes>
       <Footer/>
-    </BrowserRouter>
+    </>
   )
 }

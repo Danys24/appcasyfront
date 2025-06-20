@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect} from 'react'
+import {guardarToken} from '../utils/auth.js'
 
 const AuthContext = createContext()
 
@@ -10,7 +11,7 @@ export function AuthProvider({ children }) {
     try {
         const storedToken = localStorage.getItem('token')
         if (storedToken) {
-          setToken(JSON.parse(storedToken))
+          setToken(storedToken)
         }
       } catch (error) {
         console.error("Error leyendo localStorage:", error)
@@ -21,12 +22,14 @@ export function AuthProvider({ children }) {
 
   const login = (userData) => {
     setToken(userData);
-    localStorage.setItem('token', JSON.stringify(userData))
+    guardarToken(userData);
+    //localStorage.setItem('token', JSON.stringify(userData))
   }
 
   const logout = () => {
     setToken(null)
     localStorage.removeItem('token')
+    localStorage.removeItem('tokenExpiry')
   }
 
   const isAuthenticated = !!token
