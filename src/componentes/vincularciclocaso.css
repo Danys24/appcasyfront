@@ -11,9 +11,9 @@
   z-index: 1000; 
 }
 
-.btn-crear-ciclo{
+.btn-crear-vinculo{
     color: rgb(255, 255, 255);
-    width: 7.5rem;
+    width: 8.5rem;
     height: 2.5rem;
     border: none;
     background: rgb(100,100,100); 
@@ -26,12 +26,12 @@
     padding: 0.4rem;
 }
 
-.btn-crear-ciclo svg{
+.btn-crear-vinculo svg{
     width: 0.8rem;
     height: 0.8rem;
 }
 
-.btn-crear-ciclo:hover{
+.btn-crear-vinculo:hover{
     color: rgb(50,50,50);
     fill: rgb(50,50,50);
     background: rgb(200,200,200);
@@ -87,7 +87,7 @@
     outline: none;
 }
 
-.container-info-ciclo{
+.container-info-ciclo-vinculado{
     margin-top: 1.5rem;
     margin-bottom: 4rem;
     width: 100%;
@@ -96,7 +96,7 @@
     gap: 1rem;
 }
 
-.container-info-ciclo svg{
+.container-info-ciclo-vinculado svg{
     width: 1.2rem;
     height: 1.2rem;
     fill: rgb(243, 247, 6);;
@@ -107,7 +107,7 @@
     padding: 0.5rem;
     display: flex;
     flex-direction: row;
-    background: rgb(230, 230, 230);
+    background: rgb(160, 160, 160);
 }
 
 .contenedor-paginado{

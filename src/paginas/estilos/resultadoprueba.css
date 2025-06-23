@@ -1,6 +1,6 @@
-.contenedor-info-prueba{
+.contenedor-info-resultado{
     background-color: rgba(250, 250, 250,0.9);
-    width: 90%;
+    width: 90vw;
     height: 100%;
     padding: 1rem;
     display: flex;
@@ -10,7 +10,7 @@
     overflow: auto;
 }
 
-.contenedor-info-prueba::-webkit-scrollbar{
+.contenedor-info-resultado::-webkit-scrollbar{
     display: none;
 }
 

@@ -13,6 +13,7 @@ import CrearUsuario from '../paginas/crearUsuario'
 import Set from '../paginas/set'
 import CasoPrueba from '../paginas/casoPrueba'
 import PrivateRoute from './privateRoutes'
+import ResultadoPrueba from '../paginas/resultadoPrueba'
 
 export default function AppRoutes() {
   return (
@@ -28,6 +29,7 @@ export default function AppRoutes() {
           <Route path="SetPrueba" element={<PrivateRoute><SetPrueba /></PrivateRoute>} />
           <Route path="SetPrueba/Set/:idSet" element={<PrivateRoute><Set /></PrivateRoute>} />
           <Route path="SetPrueba/Set/:idSet/CasoPrueba/:idCaso" element={<PrivateRoute><CasoPrueba /></PrivateRoute>} />
+          <Route path="SetPrueba/Set/:idSet/CasoPrueba/:idCaso/ciclo/:idCiclo" element={<PrivateRoute><ResultadoPrueba /></PrivateRoute>} />
           <Route path="Informes" element={<PrivateRoute><Informes /></PrivateRoute>} />
         </Route>
         <Route path="/Ayuda" element={<PrivateRoute><Ayuda /></PrivateRoute>} />

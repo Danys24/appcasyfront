@@ -36,9 +36,9 @@ export async function obtenerCiclosPorIdProyectoPaginas(idProyecto, page, limit)
     }
 }
 
-export async function obtenerCiclosPorIdCiclosTotal(idSet){
+export async function obtenerCiclosPorIdCasos(idCaso){
     try{
-        const res = await fetch(`${URL}proyectos/${idProyecto}/sets`, {
+        const res = await fetch(`${URL}casos/${idCaso}/ciclos`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -49,7 +49,7 @@ export async function obtenerCiclosPorIdCiclosTotal(idSet){
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al obtener los casos');
+            throw new Error(data.error || 'Error al obtener los ciclos');
         }
 
         
@@ -57,6 +57,30 @@ export async function obtenerCiclosPorIdCiclosTotal(idSet){
 
     }catch(err){
         console.error(err);
+    }
+}
+
+export async function obtenerCiclosPorIdCiclosNoRelacionados(idProyecto,idCaso){
+    try{
+        const res = await fetch(`${URL}proyectos/${idProyecto}/casos/${idCaso}/ciclosNoVinculados`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw new Error(data.error || 'Error al obtener los ciclos');
+        }
+
+        
+        return data;
+
+    }catch(err){
+        throw err;
     }
 }
 

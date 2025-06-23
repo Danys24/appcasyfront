@@ -12,10 +12,9 @@ if(token){
     idUsuario = decode.id;
 }
 
-
-export async function obtenerCasosPorIdSetPaginas(idSet, page, limit){
+export async function obtenerResultadosPorIdPasoIdCiclo(idCiclo,idPaso){
     try{
-        const res = await fetch(`${URL}sets/${idSet}/casosPaginas?page=${page}&limit=${limit}`, {
+        const res = await fetch(`${URL}ciclosCasos/${idCiclo}/pasos/${idPaso}/resultados`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -26,30 +25,7 @@ export async function obtenerCasosPorIdSetPaginas(idSet, page, limit){
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al obtener los casos');
-        }
-
-        return data;
-
-    }catch(err){
-        console.error(err);
-    }
-}
-
-export async function obtenerCasosPorIdSetTotal(idSet){
-    try{
-        const res = await fetch(`${URL}sets/${idSet}/casos`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            }
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-            throw new Error(data.error || 'Error al obtener los casos');
+            throw new Error(data.error || 'Error al obtener los resultados');
         }
 
         
