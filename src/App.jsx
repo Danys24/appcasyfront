@@ -13,7 +13,7 @@ function App() {
   const token = getToken();
     if (!token) {
       // Si el token no existe o expiró
-      if(location.pathname !== '/Login' && location.pathname !== '/'){
+      if(location.pathname !== '/login' && location.pathname !== '/'){
         //alert('Tu sesión ha expirado. Por favor inicia sesión de nuevo.');
         removeToken();
         navigate('/login'); // o donde tengas tu login

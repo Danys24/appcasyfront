@@ -36,7 +36,31 @@ export async function obtenerResultadosPorIdPasoIdCiclo(idCiclo,idPaso){
     }
 }
 
-export async function crearUnCaso(idSet,form){
+export async function obtenerResultadosPorIdCasoIdCiclo(idCiclo,idCaso){
+    try{
+        const res = await fetch(`${URL}casos/${idCaso}/ciclos/${idCiclo}/resultados`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw new Error(data.error || 'Error al obtener los resultados');
+        }
+
+        
+        return data;
+
+    }catch(err){
+        console.error(err);
+    }
+}
+
+export async function crearUnResultado(idSet,form){
     try{
         const res = await fetch(`${URL}casos`, {
             method: 'POST',
