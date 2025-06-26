@@ -35,7 +35,7 @@ export function AuthProvider({ children }) {
   const isAuthenticated = !!token
 
   return (
-    <AuthContext.Provider value={{ token, login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={{ token, setToken, login, logout, isAuthenticated }}>
       {loading ? <div>Cargando...</div> : children}
     </AuthContext.Provider>
   )

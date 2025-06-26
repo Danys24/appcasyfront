@@ -60,9 +60,9 @@ export async function obtenerResultadosPorIdCasoIdCiclo(idCiclo,idCaso){
     }
 }
 
-export async function crearUnResultado(idSet,form){
+export async function crearUnResultado(form,idCaso,idCiclo){
     try{
-        const res = await fetch(`${URL}casos`, {
+        const res = await fetch(`${URL}resultados`, {
             method: 'POST',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -70,11 +70,11 @@ export async function crearUnResultado(idSet,form){
             },
             body:JSON.stringify(
                 {
-                    idSet:idSet,
-                    nombre:form.nombre,
-                    descripcion:form.descripcion,
-                    estado: form.estado, 
-                    responsable: form.responsable 
+                    idPaso:form.id,
+                    idCiclo:idCiclo,
+                    idCaso:idCaso,
+                    observacion: form.observacion, 
+                    estado: form.estado 
                 }
             )
         });
@@ -82,7 +82,7 @@ export async function crearUnResultado(idSet,form){
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al crear el caso');
+            throw new Error(data.error || 'Error al crear el resultado');
         }
 
     }catch(err){
@@ -90,49 +90,25 @@ export async function crearUnResultado(idSet,form){
     }
 }
 
-export async function obtenerUnCaso(id){
+
+export async function actualizarUnResultado(form){
     try{
-        const res = await fetch(`${URL}casos/${id}`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-            throw new Error(data.error || 'Error al obtener el caso');
-        }
-
-        return data;
-
-    }catch(err){
-        console.error(err);
-    }
-}
-
-export async function actualizarUnCaso(form){
-    try{
-        const res = await fetch(`${URL}casos/${form.id}`, {
+        const res = await fetch(`${URL}resultados/${form.id_resultado}`, {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
             body:JSON.stringify({
-                nombre:form.nombre,
-                descripcion: form.descripcion,
-                estado:form.estado,
-                responsable:form.responsable
+                observacion:form.observacion,
+                estado:form.estado
             })
         });
 
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al actualizar el caso');
+            throw new Error(data.error || 'Error al actualizar el resultado');
         }
 
     }catch(err){

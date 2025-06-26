@@ -46,8 +46,6 @@ function CasoPrueba() {
     guardarPasos();
   },[])
 
-  console.log('pasos',filas);
-
 
   const handleInputChange = (index, campo, valor) => {
     const nuevasFilas = [...filas];

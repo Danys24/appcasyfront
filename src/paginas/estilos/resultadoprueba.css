@@ -1,6 +1,6 @@
 .contenedor-info-resultado{
     background-color: rgba(250, 250, 250,0.9);
-    width: 90vw;
+    width: 97vw;
     height: 100%;
     padding: 1rem;
     display: flex;
@@ -75,7 +75,7 @@
 }
 
 .anexo-paso {
-    width: 11.5rem;
+    width: 20rem;
     font-size: 0.1rem;
     padding: 0.6rem 1rem;
     font-size: 1rem;
@@ -85,6 +85,7 @@
     color: #374151;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: none;
 }
 
 .anexo-paso:hover {
@@ -130,4 +131,17 @@
   outline: none;
   border-color: rgb(228, 231, 28);
   box-shadow: 0 0 0 3px rgba(228, 231, 28, 0.3);
+}
+
+.anexos-resultado{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.anexos-resultado svg{
+    width: 2rem;
+    height: 2rem;
+
 }
