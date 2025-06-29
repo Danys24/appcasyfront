@@ -116,69 +116,21 @@ export async function actualizarUnResultado(form){
     }
 }
 
-export async function eliminarUnCaso(id){
+export async function crearEvidencia(form){
     try{
-        const res = await fetch(`${URL}casos/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            }
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-            throw new Error(data.error || 'Error al eliminar el caso');
-        }
-
-    }catch(err){
-        console.error(err);
-    }
-}
-
-export async function ordenarCasos(idSet){
-    try{
-        const res = await fetch(`${URL}sets/${idSet}/casos`, {
-            method: 'PUT',
-            headers: {
-                'authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-            throw new Error(data.error || 'Error al ordenar los casos');
-        }
-
-    }catch(err){
-        console.error(err);
-    }
-}
-
-export async function crearVinculoCicloCaso(form,idCaso){
-    try{
-        const res = await fetch(`${URL}casos/vincularCasosCiclo`, {
+        const res = await fetch(`${URL}resultados/evidencias`, {
             method: 'POST',
             headers: {
                 'authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
             },
-            body:JSON.stringify(
-                {
-                    idCaso:idCaso,
-                    idCiclo:form.id,
-                    estado: form.estado
-                }
-            )
+            body:form,
+
         });
 
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al vincular el caso con el ciclo');
+            throw new Error(data.error || 'Error al crear la evidencia');
         }
 
     }catch(err){
@@ -186,33 +138,33 @@ export async function crearVinculoCicloCaso(form,idCaso){
     }
 }
 
-export async function actualizarVinculo(form,idCaso){
+export async function obtenerEvidenciasPorIdResultado(idResultado){
     try{
-        const res = await fetch(`${URL}casos/${idCaso}/vicularCasosCiclo/${form.id}`, {
-            method: 'PUT',
+        const res = await fetch(`${URL}resultados/${idResultado}/evidencias`, {
+            method: 'GET',
             headers: {
                 'authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
-            },
-            body:JSON.stringify({
-                estado:form.estado
-            })
+            }
         });
 
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al actualizar el vinculo');
+            throw new Error(data.error || 'Error al obtener las evidencias');
         }
 
+        
+        return data;
+
     }catch(err){
-        console.error(err);
+        throw err;
     }
 }
 
-export async function eliminarVinculo(idCiclo,idCaso){
+export async function eliminarEvidenciaPorId(id){
     try{
-        const res = await fetch(`${URL}casos/${idCaso}/vicularCasosCiclo/${idCiclo}`, {
+        const res = await fetch(`${URL}resultados/evidencias/${id}`, {
             method: 'DELETE',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -223,10 +175,19 @@ export async function eliminarVinculo(idCiclo,idCaso){
         const data = await res.json();
 
         if (!res.ok) {
-            throw new Error(data.error || 'Error al eliminar el vinculo');
+            throw new Error(data.error || 'Error al eliminar la evidencia');
         }
+
+        
+        return data;
 
     }catch(err){
         console.error(err);
     }
 }
+
+
+
+
+
+

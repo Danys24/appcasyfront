@@ -6,7 +6,7 @@ import {obtenerProyectosPorIdUsuarioTotal} from '../servicios/proyectosService.j
 
 
 function Proyecto() {
-   const {id} = useParams();
+  const {id} = useParams();
   const [listaProyectos, setListaProyectos] = useState([]);
 
   useEffect(() => {
@@ -35,8 +35,6 @@ function Proyecto() {
   return (
     <div className='contenedor-proyecto'>
         <MenuProyectos/>
-        <h2>{proyectoEncontrado.nombre}</h2>
-        <p className='decripcion-proyecto'>{proyectoEncontrado.descripcion}</p>
         <Outlet/>
 
     </div>
