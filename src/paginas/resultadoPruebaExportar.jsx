@@ -4,10 +4,11 @@ import './estilos/resultadoprueba.css';
 import {obtenerCasosPorIdSetTotal} from '../servicios/casosService.js';
 import {obtenerPasosPorIdCaso} from '../servicios/pasosService.js';
 import {obtenerCiclosPorIdCasos} from '../servicios/ciclosService.js';
-import {obtenerResultadosPorIdPasoIdCiclo, obtenerResultadosPorIdCasoIdCiclo,crearUnResultado,actualizarUnResultado,obtenerEvidenciasPorIdCasoCiclo} from '../servicios/resultadoService.js';
+import {obtenerResultadosPorIdPasoIdCiclo, obtenerResultadosPorIdCasoIdCiclo,crearUnResultado,actualizarUnResultado} from '../servicios/resultadoService.js';
 import AnexarEvidencia from '../componentes/anexarEvidencia.jsx';
 import AnexosVer from '../componentes/anexosVer.jsx';
 import exportarPDF from '../utils/exportarInformacion.js';
+import jsPDF from "jspdf";
 
 function ResultadoPrueba() {
 
@@ -17,7 +18,6 @@ function ResultadoPrueba() {
   const [listaResultados, setListaResultados] = useState([]);
   const [datos, setDatos] = useState(null);
   const [filas, setFilas] = useState([]);
-  const [listaArchivos, setListaArchivos] = useState([]);
   const [pasoData, setPasoData] = useState({
     ID:filas.length + 1, 
     PASO:'',
@@ -63,20 +63,10 @@ function ResultadoPrueba() {
       }
   }
 
-  const guardarEvidencias = async () => {
-      try {
-        const respuesta = await obtenerEvidenciasPorIdCasoCiclo(idCaso, idCiclo);
-        setListaArchivos(respuesta);       
-      } catch {
-        setListaArchivos([]);
-      }
-  }
-
   useEffect(() => {
     guardarCasos();
     guardarPasos();
     mostrarResultados();
-    guardarEvidencias();
   },[])
 
   useEffect(() => {
@@ -111,18 +101,17 @@ function ResultadoPrueba() {
     }
   }
 
-  const generarPDF =  () => {
-    exportarPDF(casoEncontrado, cicloEncontrado, listaResultados, listaArchivos);
+  const generarPDF = () => {
+    const doc = new jsPDF();
+    
   }
 
   return (
-    <div className='contenedor-info-resultado'>
+    <div id='contenido-exportar'>
       <div className='info-prueba'>
         <p>{casoEncontrado.nombre}</p>
-        <div className='estado-exportar'>
-          <p>{casoEncontrado.estado}</p>
-          <button onClick={generarPDF}>Exportar Ejecución</button>
-        </div>
+        <p>{casoEncontrado.estado}</p>
+        <button onClick={generarPDF}>Exportar</button>
       </div>
       <p>{casoEncontrado.descripcion}</p>
       <p>Ciclo: {cicloEncontrado?.nombre}</p>

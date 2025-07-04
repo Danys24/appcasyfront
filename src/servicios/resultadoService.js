@@ -186,6 +186,30 @@ export async function eliminarEvidenciaPorId(id){
     }
 }
 
+export async function obtenerEvidenciasPorIdCasoCiclo(idCaso, idCiclo){
+    try{
+        const res = await fetch(`${URL}casos/${idCaso}/ciclos/${idCiclo}/evidencia`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw new Error(data.error || 'Error al obtener las evidencias');
+        }
+
+        
+        return data;
+
+    }catch(err){
+        throw err;
+    }
+}
+
 
 
 
