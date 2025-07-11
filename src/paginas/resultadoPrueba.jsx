@@ -66,7 +66,7 @@ function ResultadoPrueba() {
   const guardarEvidencias = async () => {
       try {
         const respuesta = await obtenerEvidenciasPorIdCasoCiclo(idCaso, idCiclo);
-        setListaArchivos(respuesta);       
+        setListaArchivos(respuesta[0].url_evidencia);     
       } catch {
         setListaArchivos([]);
       }

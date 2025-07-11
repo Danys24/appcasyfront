@@ -9,6 +9,15 @@ const exportarPDF = (casoEncontrado, cicloEncontrado, listaResultados, listaArch
     const posicionX = 20;
     let posicionY = 20;
 
+    function agregarPagina(){
+      doc.addPage();
+      posicionY = 20;
+    }
+
+    function aumentarPosicionY(aumento){
+      posicionY = posicionY + aumento;
+    }
+
     doc.setFont("helvetica");
     doc.setFontSize(14);
 
@@ -16,40 +25,43 @@ const exportarPDF = (casoEncontrado, cicloEncontrado, listaResultados, listaArch
     doc.setFont("helvetica","bold");
     doc.text(`${casoEncontrado.nombre}`,posicionX,20);
     doc.setFont("helvetica","normal");
-    doc.setFontSize(12);
+    doc.setFontSize(11);
     doc.text(`Estado: ${casoEncontrado.estado}`,posicionX,30);
 
     const textoDividido = doc.splitTextToSize(`${casoEncontrado.descripcion}`, 180)
     doc.text(textoDividido,posicionX,40);
     doc.text(`Ciclo: ${cicloEncontrado.nombre}`,posicionX,80);
 
-    let posicion = 90
+    posicionY = 90
 
     listaResultados.forEach(resultado => {
-      posicion = posicion + 10;
-      doc.text(`Paso: ${resultado.paso}`,posicionX, posicion);
-      posicion = posicion + 10;
-      doc.text(`Resultado: ${resultado.resultado}`,posicionX, posicion);
-      posicion = posicion + 10;
-      doc.text(`Estado: ${resultado.estado}`,posicionX, posicion);
-      posicion = posicion + 10;
+      posicionY > 287 ? agregarPagina(): aumentarPosicionY(10);
+      doc.text(`Paso: ${resultado.paso}`,posicionX, posicionY);
+      posicionY > 287 ? agregarPagina(): aumentarPosicionY(10);
+      doc.text(`Resultado: ${resultado.resultado}`,posicionX, posicionY);
+      posicionY > 287 ? agregarPagina(): aumentarPosicionY(10);
+      doc.text(`Estado: ${resultado.estado}`,posicionX, posicionY);
+      posicionY > 287 ? agregarPagina(): aumentarPosicionY(10);
     })
 
-    posicion = posicion + 10
-    doc.text("Evidencias",posicionX, posicion);
+    posicionY > 287 ? agregarPagina(): aumentarPosicionY(10);
+    doc.text("Evidencias",posicionX, posicionY);
 
     function agregarImagenes(lista, index = 0){
       console.log(lista)
-      if (index >= lista.length || lista[index].url_evidencia == null) {
+      if (index >= lista?.length || lista == null) {
         // cuando termina, guardar el PDF
         doc.save(`${casoEncontrado.nombre}.pdf`);
         return;
       }
 
       const evi = lista[index];
-      posicion = posicion + 10;
-      getImageBase64(evi.url_evidencia, function (imgBase64) {
-        doc.addImage(imgBase64, 'PNG', posicionX, posicion, 150, 100);
+      posicionY > 287 ? agregarPagina(): aumentarPosicionY(10);
+      const tamanioImgY = 100;
+      getImageBase64(evi, function (imgBase64) {
+        (posicionY + tamanioImgY) > 287 ? agregarPagina() : posicionY; 
+        doc.addImage(imgBase64, 'PNG', posicionX, posicionY, 150, tamanioImgY);
+        aumentarPosicionY(tamanioImgY);
         agregarImagenes(lista, index + 1);
       });
 
